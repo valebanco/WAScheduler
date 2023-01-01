@@ -10,11 +10,7 @@ import android.content.pm.PackageManager;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-class PermissionChecker {
-    public static final String MESSAGE_RATIONALE_READ_CONTACTS = "Read Contact permission is necessary. If you do not enable this permission you will unable to use the app! Please,type yes or enable permission in settings section.";
-    public static final String MESSAGE_RATIONALE_CAMERA = "Camera permission is necessary. If you do not enable this permission you will unable to use the app! Please,type yes or enable permission in settings section. ";
-    public static final int REQUEST_CODE_READ_CONTACTS = 100;
-    public static final int REQUEST_CODE_CAMERA =200;
+public class PermissionChecker {
 
     private  Context context;
     private  Activity activity;
@@ -41,11 +37,8 @@ class PermissionChecker {
             return true;
         }
     }
-    public boolean hasPermission(Context context,String permission){
-        return ContextCompat.checkSelfPermission(context, permission)
-                == PackageManager.PERMISSION_GRANTED;
-    }
-    private boolean hasPermission(){
+
+    public boolean hasPermission(){
         return ContextCompat.checkSelfPermission(context, permission)
                 == PackageManager.PERMISSION_GRANTED;
     }

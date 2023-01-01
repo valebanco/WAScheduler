@@ -44,6 +44,18 @@ public class ContactLoader {
    public List<ContactModel> getContactList (){
       return contacts;
    }
+   public ContactModel getContactFromName(String name){
+      ContactModel contactToRetrieve = new ContactModel();
+
+      for (ContactModel el : contacts){
+         if(el.getName().equals(name)){
+            contactToRetrieve.setName(el.getName());
+            contactToRetrieve.setNumber(el.getNumber());
+         }
+      }
+
+      return contactToRetrieve;
+   }
 
    public void loadWAContactList() {
       ContentResolver cr = context.getContentResolver();

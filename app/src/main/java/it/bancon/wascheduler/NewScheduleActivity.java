@@ -10,8 +10,10 @@ import it.bancon.wascheduler.view.SelectDateFragment;
 
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -19,12 +21,24 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class NewScheduleActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, SelectDateFragment.SelectDateFragmentListener {
     private TextView textTimeSelected;
     private TextView textDateSelected;
+
+    private EditText editTextTitle;
+    private EditText editTextDescription;
+    private EditText editTextContact;
+    private EditText editTextMessage;
     private SelectDateFragment selectDateFragment;
     private CompletedFragment completedFragment;
     private AutoCompleteTextView editTextPhone;
@@ -37,9 +51,12 @@ public class NewScheduleActivity extends AppCompatActivity implements TimePicker
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_schedule);
         getSupportActionBar().setTitle("Nuova schedulazione");
-
+        contacts = new ArrayList<>();
         populateAutocomplete();
-
+        editTextTitle = findViewById(R.id.editTextTitleSchedule);
+        editTextDescription = findViewById(R.id.editTextDescription);
+        editTextContact = findViewById(R.id.editTextPhone);
+        editTextMessage = findViewById(R.id.editTextMessage);
         textDateSelected = findViewById(R.id.textViewShowDateSelected);
         textTimeSelected = findViewById(R.id.textViewShowTimeSelected);
     }
@@ -54,19 +71,35 @@ public class NewScheduleActivity extends AppCompatActivity implements TimePicker
         editTextPhone.setAdapter(adapter);
     }
 
-    public void popCompletedMessage(View view){
+    public void popCompletedMessage(View view) throws IOException {
         /*TO DO:
         -   INSERIRE VALIDAZIONE PER POI POTER VISUALIZZARE IL FRAGMENT
         -   SALVATAGGIO INFORMAZIONI IN UN FILE
         * */
-        ScheduleValidatorForm validatorForm= new ScheduleValidatorForm(NewScheduleActivity.this,NewScheduleActivity.this);
+
+        ScheduleValidatorForm validatorForm= new ScheduleValidatorForm(NewScheduleActivity.this,NewScheduleActivity.this,contacts);
         boolean resultValidation = validatorForm.validate();
-        if(resultValidation){
+        if(resultValidation) {
+            saveNewSchedulation();
             completedFragment = new CompletedFragment(this);
             completedFragment.show(getSupportFragmentManager(),"completedFragment");
         }
 
     }
+
+    private void saveNewSchedulation() throws IOException {
+
+        SchedulationDetails schedulationDetails = new SchedulationDetails();
+        schedulationDetails.setTitle(editTextTitle.getText().toString());
+        schedulationDetails.setDescription(editTextDescription.getText().toString());
+        schedulationDetails.setMessage(editTextMessage.getText().toString());
+        schedulationDetails.setDateToSchedule(textDateSelected.getText().toString().replace("\n"," ").trim());
+        schedulationDetails.setHourToSchedule(textTimeSelected.getText().toString().replace("\n"," ").trim());
+        schedulationDetails.setContacts(contacts);
+
+        IOUtils.addScheduleProgramToFile(NewScheduleActivity.this,AppContractClass.FILE_NAME,schedulationDetails);
+    }
+
     public void popTimePicker(View view){
 
         int style = AlertDialog.THEME_HOLO_DARK;
@@ -92,7 +125,6 @@ public class NewScheduleActivity extends AppCompatActivity implements TimePicker
 
     @Override
     public void OnDateChanged(int selectedYear, int selectedMonth, int selectedDay) {
-        System.out.println("passo");
         day = selectedDay;
         month = selectedMonth;
         year = selectedYear;

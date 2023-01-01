@@ -1,4 +1,7 @@
 package it.bancon.wascheduler.model;
 
-class SchedulationDetailsPreview extends Schedulation{
+public class SchedulationDetailsPreview extends Schedulation{
+    public SchedulationDetailsPreview(){
+        super();
+    }
 }

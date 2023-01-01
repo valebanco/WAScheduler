@@ -28,6 +28,18 @@ android {
     buildFeatures {
         viewBinding true
     }
+    sourceSets {
+        main {
+            java {
+                exclude 'it/bancon/wascheduler/MainActivity.java'
+            }
+        }
+        androidTest {
+            java {
+                exclude 'it/bancon/wascheduler/MainActivity.java'
+            }
+        }
+    }
 }
 
 dependencies {

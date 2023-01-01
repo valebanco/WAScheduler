@@ -8,9 +8,11 @@ import android.widget.TextView;
 import java.nio.channels.AcceptPendingException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import it.bancon.wascheduler.R;
 import it.bancon.wascheduler.model.ContactLoader;
+import it.bancon.wascheduler.model.ContactModel;
 import it.bancon.wascheduler.model.SchedulationDetails;
 
 public class ScheduleValidatorForm implements Validator{
@@ -24,10 +26,12 @@ public class ScheduleValidatorForm implements Validator{
    private String message;
    private Activity activity;
    private Context context;
+   private List<ContactModel> contactModels;
 
-   public ScheduleValidatorForm(Activity activity, Context context){
+   public ScheduleValidatorForm(Activity activity, Context context, List<ContactModel> contactModels){
       this.activity = activity;
       this.context = context;
+      this.contactModels = contactModels;
    }
 
    @Override
@@ -51,6 +55,8 @@ public class ScheduleValidatorForm implements Validator{
          if (!Arrays.asList(contactLoader.getContactNames()).contains(editTextPhone.getText().toString())){
             editTextPhone.setError(ERROR_MESSAGE_INVALID_CONTACT);
             result = false;
+         } else {
+            this.contactModels.add(contactLoader.getContactFromName(editTextPhone.getText().toString()));
          }
       } else {
          editTextPhone.setError(ERROR_MESSAGE_EMPTY);
