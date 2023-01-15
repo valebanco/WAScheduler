@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue"
+    android:background="@color/orange1"
     android:paddingLeft="20dp"
     android:paddingTop="30dp"
     android:paddingRight="20dp"
@@ -25,7 +25,7 @@
             android:inputType="text"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textColorHint="@color/hint_color"
+            android:textColorHint="@color/material_dynamic_neutral80"
             android:textSize="30dp" />
 
         <EditText
@@ -138,7 +138,7 @@
             android:background="@color/white" />
 
         <Button
-            android:id="@+id/buttonCompleteSchedulation"
+            android:id="@+id/buttonUpdateSchedulation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -147,7 +147,18 @@
             android:layout_marginBottom="10dp"
             android:onClick="popCompletedMessage"
             android:backgroundTint="@color/teal_700"
-            android:text="+ Crea schedulazione" />
+            android:text="/ modifica schedulazione" />
+        <Button
+            android:id="@+id/buttonRemoveSchedulation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="10dp"
+            android:onClick="popCompletedMessage"
+            android:backgroundTint="@color/design_default_color_error"
+            android:text="- Rimuovi schedulazione" />
 
 
 

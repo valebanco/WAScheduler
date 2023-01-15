@@ -1,4 +1,4 @@
-package it.bancon.wascheduler;
+package it.bancon.wascheduler.utils;
 
 import android.content.Context;
 
@@ -8,10 +8,10 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.bancon.wascheduler.configuration.AppContractClass;
 import it.bancon.wascheduler.model.ContactModel;
 import it.bancon.wascheduler.model.SchedulationDetails;
 

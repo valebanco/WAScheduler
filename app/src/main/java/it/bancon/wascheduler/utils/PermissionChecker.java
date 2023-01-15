@@ -1,4 +1,4 @@
-package it.bancon.wascheduler;
+package it.bancon.wascheduler.utils;
 
 import android.Manifest;
 import android.app.Activity;

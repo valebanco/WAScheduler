@@ -3,11 +3,11 @@ package it.bancon.wascheduler.model;
 import java.util.List;
 
 public abstract class Schedulation {
-    private String title;
-    private String description;
-    private List<ContactModel> contacts;
-    private String dateToSchedule;
-    private String HourToSchedule;
+    protected String title;
+    protected String description;
+    protected List<ContactModel> contacts;
+    protected String dateToSchedule;
+    protected String hourToSchedule;
 
     public List<ContactModel> getContacts() {
         return contacts;
@@ -42,10 +42,10 @@ public abstract class Schedulation {
     }
 
     public String getHourToSchedule() {
-        return HourToSchedule;
+        return hourToSchedule;
     }
 
     public void setHourToSchedule(String hourToSchedule) {
-        HourToSchedule = hourToSchedule;
+        this.hourToSchedule = hourToSchedule;
     }
 }

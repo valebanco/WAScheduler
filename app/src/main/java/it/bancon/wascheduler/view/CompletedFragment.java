@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import it.bancon.wascheduler.R;
-import it.bancon.wascheduler.main.MainAppActivity;
+import it.bancon.wascheduler.activity.MainAppActivity;
 
 
 public class CompletedFragment extends DialogFragment {

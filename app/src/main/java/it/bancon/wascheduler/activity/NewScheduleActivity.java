@@ -1,19 +1,22 @@
-package it.bancon.wascheduler;
+package it.bancon.wascheduler.activity;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import it.bancon.wascheduler.R;
+import it.bancon.wascheduler.configuration.AppContractClass;
 import it.bancon.wascheduler.model.ContactLoader;
 import it.bancon.wascheduler.model.ContactModel;
 import it.bancon.wascheduler.model.SchedulationDetails;
+import it.bancon.wascheduler.utils.IOUtils;
 import it.bancon.wascheduler.validator.ScheduleValidatorForm;
 import it.bancon.wascheduler.view.CompletedFragment;
 import it.bancon.wascheduler.view.SelectDateFragment;
 
+
+
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
-import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -21,14 +24,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 public class NewScheduleActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, SelectDateFragment.SelectDateFragmentListener {
@@ -50,7 +47,11 @@ public class NewScheduleActivity extends AppCompatActivity implements TimePicker
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_schedule);
-        getSupportActionBar().setTitle("Nuova schedulazione");
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.action_bar_new_schedule_activity);
+
+
+
         contacts = new ArrayList<>();
         populateAutocomplete();
         editTextTitle = findViewById(R.id.editTextTitleSchedule);
@@ -97,7 +98,7 @@ public class NewScheduleActivity extends AppCompatActivity implements TimePicker
         schedulationDetails.setHourToSchedule(textTimeSelected.getText().toString().replace("\n"," ").trim());
         schedulationDetails.setContacts(contacts);
 
-        IOUtils.addScheduleProgramToFile(NewScheduleActivity.this,AppContractClass.FILE_NAME,schedulationDetails);
+        IOUtils.addScheduleProgramToFile(NewScheduleActivity.this, AppContractClass.FILE_NAME,schedulationDetails);
     }
 
     public void popTimePicker(View view){

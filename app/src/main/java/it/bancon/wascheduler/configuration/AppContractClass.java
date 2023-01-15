@@ -1,4 +1,4 @@
-package it.bancon.wascheduler;
+package it.bancon.wascheduler.configuration;
 
 public class AppContractClass {
    public static final String FILE_NAME = "schedules.txt";
@@ -9,6 +9,8 @@ public class AppContractClass {
    public static final int REQUEST_CODE_READ_CONTACTS = 100;
 
    public static final String MESSAGE_TOAST_NEED_READ_CONTACT_PERMISSION = "Enable the Read Contact permission!!";
+
+   public static final String KEY_PARCELABLE_SCHEDULATION_DETAILS = "schedulation_details_selected";
 
 
 

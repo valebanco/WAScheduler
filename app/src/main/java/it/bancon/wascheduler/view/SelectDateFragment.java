@@ -63,13 +63,13 @@ public class SelectDateFragment extends DialogFragment {
         selectDateFragmentListener.OnDateChanged(Integer.parseInt(date[2]),Integer.parseInt(date[1]),Integer.parseInt(date[0]));
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-                selectDateFragmentListener.OnDateChanged(i,i1,i2);
+            public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
+                selectDateFragmentListener.OnDateChanged(year,month,day);
             }
         });
     }
 
     public interface SelectDateFragmentListener{
-        public void OnDateChanged(int year, int month, int dayOfMonth);
+        public void OnDateChanged(int year, int month, int day);
     }
 }
