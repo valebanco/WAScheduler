@@ -46,7 +46,7 @@
             android:gravity="center"
             >
             <Button
-                android:id="@+id/buttonYesRemove"
+                android:id="@+id/buttonYesUpdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/design_default_color_error"
@@ -54,7 +54,7 @@
                 android:layout_marginRight="20dp"
                 />
             <Button
-                android:id="@+id/buttonNoRemove"
+                android:id="@+id/buttonNoUpdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/teal_700"
