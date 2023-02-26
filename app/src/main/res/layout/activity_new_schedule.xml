@@ -39,18 +39,25 @@
             android:textAlignment="center"
             android:textSize="25dp" />
 
-        <AutoCompleteTextView
-            android:id="@+id/editTextPhone"
+        <Button
+            android:id="@+id/buttonAddContacts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/bg_border_edit_text_new_schedule"
-            android:ems="10"
-            android:hint="A: Cerca contatto"
-            android:minHeight="48dp"
-            android:textAlignment="center"
-            android:popupTheme="@style/Theme.AppCompat"/>
+            android:text="Aggiungi contatti"
+            android:onClick="popSelectContactsFragment"
+            android:backgroundTint="@color/orange1"
+            />
 
+        <TextView
+            android:id="@+id/textViewShowNumberAddedContacts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Contatti aggiunti: 0"
+            android:textAlignment="center"
+            style="@android:style/Widget.EditText"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:layout_marginBottom="20dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"

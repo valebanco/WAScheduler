@@ -9,6 +9,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import it.bancon.wascheduler.configuration.AppContractClass;
@@ -65,6 +67,21 @@ public class IOUtils {
 
       br.close();
       return schedulationDetails;
+   }
+   public static int generateId(Context context, String fileName) throws IOException {
+
+      if(isEmptyFile(context,fileName)){
+         return 1;
+      } else {
+         List<SchedulationDetails> schedulationDetailsList = loadScheduleProgramsFromFile(context,fileName);
+         List<Integer> idList = new ArrayList<>();
+
+         for (SchedulationDetails item : schedulationDetailsList) {
+            idList.add(new Integer(item.getId()));
+         }
+
+         return Collections.max(idList).intValue() + 1 ;
+      }
    }
    public static void addScheduleProgramToFile (Context context, String fileName, SchedulationDetails schedulationDetails ) throws IOException {
       FileOutputStream fos = context.openFileOutput(fileName,Context.MODE_APPEND);

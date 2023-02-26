@@ -1,13 +1,20 @@
 package it.bancon.wascheduler.model;
 
 import java.util.List;
+import java.util.Objects;
 
 public abstract class Schedulation {
+    protected int id;
     protected String title;
     protected String description;
     protected List<ContactModel> contacts;
     protected String dateToSchedule;
     protected String hourToSchedule;
+
+
+    public int getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
 
     public List<ContactModel> getContacts() {
         return contacts;

@@ -28,7 +28,6 @@ public class UpdateScheduleConfirmationDialogFragment extends DialogFragment {
 
     public UpdateScheduleConfirmationDialogFragment(Context context) {
         this.context = context;
-
     }
 
     @Override

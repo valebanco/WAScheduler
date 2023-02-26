@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 import it.bancon.wascheduler.configuration.AppContractClass;
 
@@ -82,4 +83,6 @@ public class SchedulationDetails extends Schedulation implements Parcelable {
             contacts.add((ContactModel) objectsFromReading[i]);
         }
     }
+
+
 }

@@ -143,5 +143,9 @@ public class ContactLoader {
       }
       cursor.close();
    }
+
+   public ArrayList<ContactModel> getContacts(){
+      return this.contacts;
+   }
 }
 

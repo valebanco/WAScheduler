@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:padding="5dp">
+
+    <LinearLayout
+        android:id="@+id/LinearRowItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/bg_border_linear_layout"
+        android:paddingTop="10px"
+        android:paddingBottom="10px"
+        android:paddingLeft="10px"
+        >
+
+        <ImageView
+            android:id="@+id/IconRowItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/blue"
+            android:background="@drawable/bg_image_list_contact_item"
+            android:src= "@android:drawable/ic_menu_my_calendar" />
+
+        <LinearLayout
+            android:id="@+id/LinearRowContentItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp">
+            <TextView
+                android:id="@+id/textViewNameContactItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome contatto"
+                android:layout_gravity="center"
+                android:textColor="@color/purple_700"
+                android:layout_weight="1"
+                android:textSize="15dp" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/buttonRemoveFromListContacts"
+                android:background="@drawable/bg_image_list_contact_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:src= "@drawable/minus_button"
+                />
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

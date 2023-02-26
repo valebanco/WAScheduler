@@ -18,11 +18,11 @@ import it.bancon.wascheduler.model.SchedulationDetails;
 public class ScheduleValidatorForm implements Validator{
    private static final String EMPTY= "";
    private static final String ERROR_MESSAGE_EMPTY = "Questo campo non può essere vuoto";
-   private static final String ERROR_MESSAGE_INVALID_CONTACT = "Contatto non valido";
    private static final String ERROR_MESSAGE_NO_DATE_SELECTED = "nessuna data di inoltro aggiunta";
    private static final String ERROR_MESSAGE_NO_TIME_SELECTED = "nessuna ora di inoltro aggiunta";
    private static final String NO_DATE_SELECTED = "Data selezionata: nessuna";
    private static final String NO_TIME_SELECTED = "Ora selezionata: nessuna";
+   private static final String NO_CONTACTS_SELECTED = "Seleziona almeno un contatto";
    private String message;
    private Activity activity;
    private Context context;
@@ -42,7 +42,7 @@ public class ScheduleValidatorForm implements Validator{
 
       EditText editTextTitle = activity.findViewById(R.id.editTextTitleSchedule);
       EditText editTextMessage = activity.findViewById(R.id.editTextMessage);
-      EditText editTextPhone = activity.findViewById(R.id.editTextPhone);
+      TextView textViewCountContacts = activity.findViewById(R.id.textViewShowNumberAddedContacts);
       TextView textViewDate = activity.findViewById(R.id.textViewShowDateSelected);
       TextView textViewTime = activity.findViewById(R.id.textViewShowTimeSelected);
 
@@ -51,16 +51,11 @@ public class ScheduleValidatorForm implements Validator{
          result = false;
       }
 
-      if (!editTextPhone.getText().toString().trim().equals(EMPTY)){
-         if (!Arrays.asList(contactLoader.getContactNames()).contains(editTextPhone.getText().toString())){
-            editTextPhone.setError(ERROR_MESSAGE_INVALID_CONTACT);
-            result = false;
-         } else {
-            this.contactModels.add(contactLoader.getContactFromName(editTextPhone.getText().toString()));
-         }
-      } else {
-         editTextPhone.setError(ERROR_MESSAGE_EMPTY);
+      if(contactModels.isEmpty()){
+         textViewCountContacts.setError(NO_CONTACTS_SELECTED);
          result = false;
+      } else {
+         textViewCountContacts.setError(null,null);
       }
 
       if(editTextMessage.getText().toString().trim().equals(EMPTY)){

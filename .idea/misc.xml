@@ -4,10 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Diamond/AppData/Local/Android/Sdk/platforms/android-32/data/res/drawable/ic_lock_idle_alarm.xml" value="0.3035" />
+        <entry key="..\:/Users/Diamond/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_list_item_1.xml" value="0.23143115942028986" />
         <entry key="..\:/dev/WAScheduler/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.327" />
         <entry key="..\:/dev/WAScheduler/app/src/main/res/drawable/bg_border_edit_text_new_schedule.xml" value="0.341" />
         <entry key="..\:/dev/WAScheduler/app/src/main/res/drawable/bg_border_linear_layout.xml" value="0.341" />
         <entry key="..\:/dev/WAScheduler/app/src/main/res/drawable/bg_border_title_new_schedule.xml" value="0.191" />
+        <entry key="..\:/dev/WAScheduler/app/src/main/res/drawable/bg_image_list_contact_item.xml" value="0.3665" />
         <entry key="..\:/dev/WAScheduler/app/src/main/res/drawable/bg_image_list_scheduler_item.xml" value="0.327" />
         <entry key="..\:/dev/WAScheduler/app/src/main/res/drawable/ic_launcher_background.xml" value="0.341" />
         <entry key="..\:/dev/WAScheduler/app/src/main/res/layout/action_bar_new_schedule_activity.xml" value="0.20520833333333333" />
@@ -19,12 +21,14 @@
         <entry key="..\:/dev/WAScheduler/app/src/main/res/layout/activity_new_schedule.xml" value="0.264" />
         <entry key="..\:/dev/WAScheduler/app/src/main/res/layout/activity_schedule_list_program.xml" value="0.21041666666666667" />
         <entry key="..\:/dev/WAScheduler/app/src/main/res/layout/bg_border_linear_layout.xml" value="0.3428442028985507" />
+        <entry key="..\:/dev/WAScheduler/app/src/main/res/layout/contact_preview_item.xml" value="0.365625" />
         <entry key="..\:/dev/WAScheduler/app/src/main/res/layout/contacts_list_view.xml" value="0.358695652173913" />
         <entry key="..\:/dev/WAScheduler/app/src/main/res/layout/content_schedule_list_program.xml" value="0.21041666666666667" />
         <entry key="..\:/dev/WAScheduler/app/src/main/res/layout/fragment_completed.xml" value="0.36666666666666664" />
         <entry key="..\:/dev/WAScheduler/app/src/main/res/layout/fragment_first.xml" value="0.21041666666666667" />
         <entry key="..\:/dev/WAScheduler/app/src/main/res/layout/fragment_remove_schedule_confirmation_dialog.xml" value="0.23645833333333333" />
         <entry key="..\:/dev/WAScheduler/app/src/main/res/layout/fragment_second.xml" value="0.21041666666666667" />
+        <entry key="..\:/dev/WAScheduler/app/src/main/res/layout/fragment_select_contacts.xml" value="0.20863616930312098" />
         <entry key="..\:/dev/WAScheduler/app/src/main/res/layout/fragment_select_data.xml" value="0.36666666666666664" />
         <entry key="..\:/dev/WAScheduler/app/src/main/res/layout/fragment_select_hour.xml" value="0.36666666666666664" />
         <entry key="..\:/dev/WAScheduler/app/src/main/res/layout/fragment_update_schedule_confirmation_dialog.xml" value="0.25052083333333336" />
