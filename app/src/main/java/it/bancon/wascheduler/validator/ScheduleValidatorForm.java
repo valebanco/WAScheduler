@@ -17,13 +17,7 @@ import it.bancon.wascheduler.model.SchedulationDetails;
 
 public class ScheduleValidatorForm implements Validator{
    private static final String EMPTY= "";
-   private static final String ERROR_MESSAGE_EMPTY = "Questo campo non può essere vuoto";
-   private static final String ERROR_MESSAGE_NO_DATE_SELECTED = "nessuna data di inoltro aggiunta";
-   private static final String ERROR_MESSAGE_NO_TIME_SELECTED = "nessuna ora di inoltro aggiunta";
-   private static final String NO_DATE_SELECTED = "Data selezionata: nessuna";
-   private static final String NO_TIME_SELECTED = "Ora selezionata: nessuna";
-   private static final String NO_CONTACTS_SELECTED = "Seleziona almeno un contatto";
-   private String message;
+
    private Activity activity;
    private Context context;
    private List<ContactModel> contactModels;
@@ -47,30 +41,30 @@ public class ScheduleValidatorForm implements Validator{
       TextView textViewTime = activity.findViewById(R.id.textViewShowTimeSelected);
 
       if(editTextTitle.getText().toString().trim().equals(EMPTY)) {
-         editTextTitle.setError(ERROR_MESSAGE_EMPTY);
+         editTextTitle.setError(activity.getResources().getString(R.string.error_message_empty));
          result = false;
       }
 
       if(contactModels.isEmpty()){
-         textViewCountContacts.setError(NO_CONTACTS_SELECTED);
+         textViewCountContacts.setError(activity.getResources().getString(R.string.no_contacts_selected));
          result = false;
       } else {
          textViewCountContacts.setError(null,null);
       }
 
       if(editTextMessage.getText().toString().trim().equals(EMPTY)){
-         editTextMessage.setError(ERROR_MESSAGE_EMPTY);
+         editTextMessage.setError(activity.getResources().getString(R.string.error_message_empty));
          result = false;
       }
 
-      if(textViewDate.getText().toString().equals(NO_DATE_SELECTED)){
-         textViewDate.setText(ERROR_MESSAGE_NO_DATE_SELECTED);
+      if(textViewDate.getText().toString().equals(activity.getResources().getString(R.string.no_date_selected))){
+         textViewDate.setText(activity.getResources().getString(R.string.error_message_no_date_selected));
          textViewDate.setTextColor(activity.getResources().getColor(com.google.android.material.R.color.design_default_color_error));
          result = false;
       }
 
-      if(textViewTime.getText().toString().equals(NO_TIME_SELECTED)){
-         textViewTime.setText(ERROR_MESSAGE_NO_TIME_SELECTED);
+      if(textViewTime.getText().toString().equals(activity.getResources().getString(R.string.no_time_selected))){
+         textViewTime.setText(activity.getResources().getString(R.string.error_message_no_time_selected));
          textViewTime.setTextColor(activity.getResources().getColor(com.google.android.material.R.color.design_default_color_error));
          result = false;
       }

@@ -33,7 +33,7 @@ import java.util.Locale;
 public class NewScheduleActivity extends AppCompatActivity
         implements TimePickerDialog.OnTimeSetListener,
         SelectDateFragment.SelectDateFragmentListener,
-SelectContactsFragment.onUpdateCountSelectedContactsListener{
+        SelectContactsFragment.onUpdateCountSelectedContactsListener {
     private TextView textTimeSelected;
     private TextView textDateSelected;
     private TextView textCountContactsSelected;
@@ -42,14 +42,17 @@ SelectContactsFragment.onUpdateCountSelectedContactsListener{
     private EditText editTextDescription;
     private EditText editTextContact;
     private EditText editTextMessage;
+
     private SelectDateFragment selectDateFragment;
     private SelectContactsFragment selectContactsFragment;
     private CompletedFragment completedFragment;
-    private AutoCompleteTextView editTextPhone;
+
     private ArrayList<ContactModel> contacts;
     private SelectDateFragment.SelectDateFragmentListener listener = this;
+
     private int hour,minute;
     private int day,month,year;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +71,7 @@ SelectContactsFragment.onUpdateCountSelectedContactsListener{
         textDateSelected = findViewById(R.id.textViewShowDateSelected);
         textTimeSelected = findViewById(R.id.textViewShowTimeSelected);
         textCountContactsSelected = findViewById(R.id.textViewShowNumberAddedContacts);
-        textCountContactsSelected.setText("Contatti selezionati : " + contacts.size());
+        textCountContactsSelected.setText(getResources().getString(R.string.selected_contacts_text) + contacts.size());
     }
 
 
@@ -109,7 +112,7 @@ SelectContactsFragment.onUpdateCountSelectedContactsListener{
         int style = AlertDialog.THEME_HOLO_DARK;
 
         TimePickerDialog timePickerDialog = new TimePickerDialog(this,style,this,hour,minute,true);
-        timePickerDialog.setTitle("Seleziona ora");
+        timePickerDialog.setTitle(R.string.select_hour_text);
         timePickerDialog.show();
     }
 
@@ -126,7 +129,7 @@ SelectContactsFragment.onUpdateCountSelectedContactsListener{
     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
         hour = selectedHour;
         minute = selectedMinute;
-        textTimeSelected.setText("Ora selezionata: \n" + String.format(Locale.getDefault(),"%02d:%02d",hour,minute));
+        textTimeSelected.setText(getResources().getString(R.string.selected_hour_text) + String.format(Locale.getDefault(),"%02d:%02d",hour,minute));
         textTimeSelected.setTextColor(getResources().getColor(R.color.white));
     }
 
@@ -135,13 +138,13 @@ SelectContactsFragment.onUpdateCountSelectedContactsListener{
         day = selectedDay;
         month = selectedMonth;
         year = selectedYear;
-        textDateSelected.setText("Data selezionata: " + String.format(Locale.getDefault(),"%02d/%02d/%04d",day,month,year));
+        textDateSelected.setText(getResources().getString(R.string.selected_date_text) + String.format(Locale.getDefault(),"%02d/%02d/%04d",day,month,year));
         textDateSelected.setTextColor(getResources().getColor(R.color.white));
     }
 
 
     @Override
     public void onUpdateCountContactList() {
-        textCountContactsSelected.setText("Contatti selezionati : " + contacts.size());
+        textCountContactsSelected.setText(getResources().getString(R.string.selected_contacts_text) + contacts.size());
     }
 }

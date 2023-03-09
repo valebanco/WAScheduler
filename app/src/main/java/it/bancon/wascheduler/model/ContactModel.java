@@ -75,5 +75,13 @@ public class ContactModel implements Parcelable {
       ContactModel that = (ContactModel) o;
       return Objects.equals(name, that.name) && Objects.equals(number, that.number);
    }
+
+   @Override
+   public String toString() {
+      return "ContactModel{" +
+              "name='" + name + '\'' +
+              ", number='" + number + '\'' +
+              '}';
+   }
 }
 

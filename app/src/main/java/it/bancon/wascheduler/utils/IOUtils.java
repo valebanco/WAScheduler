@@ -32,7 +32,7 @@ public class IOUtils {
 
    public static List<SchedulationDetails> loadScheduleProgramsFromFile (Context context, String fileName) throws IOException {
       List<SchedulationDetails> schedulationDetails = new ArrayList<>();
-      List<ContactModel> listContact = new ArrayList<>();
+      List<ContactModel> listContact;
 
       File file = new File (context.getFilesDir(),fileName);
       BufferedReader br = new BufferedReader(new FileReader(file));
@@ -44,6 +44,7 @@ public class IOUtils {
       SchedulationDetails item;
 
       while((line = br.readLine()) != null) {
+         listContact = new ArrayList<>();
          item = new SchedulationDetails();
          data = line.split(AppContractClass.REGEX_ITEM_SCHEDULATION_DETAILS);
 
@@ -63,6 +64,8 @@ public class IOUtils {
 
          item.setContacts(listContact);
          schedulationDetails.add(item);
+
+         System.out.println(listContact);
       }
 
       br.close();

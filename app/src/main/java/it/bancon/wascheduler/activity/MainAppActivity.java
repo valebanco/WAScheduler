@@ -25,7 +25,8 @@ import it.bancon.wascheduler.model.SchedulationDetails;
 import it.bancon.wascheduler.model.SchedulationDetailsPreview;
 import it.bancon.wascheduler.view.AdapterListViewschedule;
 
-public class MainAppActivity extends AppCompatActivity implements AdapterView.OnItemClickListener,View.OnClickListener{
+public class MainAppActivity extends AppCompatActivity
+        implements AdapterView.OnItemClickListener,View.OnClickListener{
 
     FloatingActionButton FABAddScheduleProgram;
     TextView emptyListSchedulesMessage;
@@ -87,6 +88,7 @@ public class MainAppActivity extends AppCompatActivity implements AdapterView.On
     public void onItemClick(AdapterView<?> adapterView, View view, int itemPosition, long l) {
 
         Intent intent = new Intent(MainAppActivity.this, DetailsScheduleActivity.class);
+        System.out.println(schedulationDetailsList.get(itemPosition).getContacts());
         intent.putExtra(AppContractClass.KEY_PARCELABLE_SCHEDULATION_DETAILS,schedulationDetailsList.get(itemPosition));
         startActivity(intent);
 

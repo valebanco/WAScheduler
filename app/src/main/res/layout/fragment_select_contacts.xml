@@ -30,7 +30,7 @@
             android:layout_marginBottom="10dp"
             android:background="@drawable/bg_border_edit_text_new_schedule"
             android:ems="10"
-            android:hint="A: Cerca contatto"
+            android:hint="@string/to_search_contact"
             android:minHeight="48dp"
             android:textAlignment="center"
             android:popupTheme="@style/Theme.AppCompat"/>
@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/teal_700"
-            android:text="salva" />
+            android:text="@string/save" />
     </LinearLayout>
 
 

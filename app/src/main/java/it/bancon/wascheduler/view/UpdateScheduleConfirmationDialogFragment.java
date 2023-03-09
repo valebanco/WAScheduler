@@ -26,8 +26,9 @@ public class UpdateScheduleConfirmationDialogFragment extends DialogFragment {
     private  UpdateScheduleListener listener;
 
 
-    public UpdateScheduleConfirmationDialogFragment(Context context) {
+    public UpdateScheduleConfirmationDialogFragment(Context context,UpdateScheduleListener listener) {
         this.context = context;
+        this.listener = listener;
     }
 
     @Override

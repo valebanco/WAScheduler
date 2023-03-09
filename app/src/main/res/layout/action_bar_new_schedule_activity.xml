@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Crea schedulazione"
+        android:text="@string/schedulation_new_title"
         android:textColor="@color/white" />
 
 </LinearLayout>

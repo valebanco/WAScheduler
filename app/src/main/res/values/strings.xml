@@ -1,14 +1,51 @@
 <resources>
     <string name="app_name">WAScheduler</string>
-    <string name="title_activity_schedule_list_program">ScheduleListProgramActivity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="schedulation_details_title">Schedulation Details</string>
+    <string name="schedulation_new_title">Create Schedulation</string>
+    <string name="select_hour_text">select hour</string>
+    <string name="selected_contacts_text">"Selected Contacts : "</string>
+    <string name="selected_date_text">"Selected Date : "</string>
+    <string name="selected_hour_text">"Selected Hour : \n"</string>
+    <string name="search_for_other_contacts_hint">Search for other contacts...</string>
+
+    <!-- MESSAGGI DI ERRORE NELLA VALIDATION -->
+    <string name="error_message_empty">This field cannot be empty</string>
+    <string name="error_message_no_date_selected">no forward date added</string>
+    <string name="error_message_no_time_selected">no forward time added</string>
+    <string name="no_date_selected">Selected Date: no one</string>
+    <string name="no_time_selected">Selected Hour: no one</string>
+    <string name="no_contacts_selected">select at least one contact</string>
+
+    <!-- REGEX VALUE -->
+    <string name="empty_string" translatable="false"></string>
+
+    <!-- messaggi vari nei layout di modifica/aggiunta della schedule -->
+    <string name="insert_title">Insert Title...</string>
+    <string name="insert_description">Insert Description</string>
+    <string name="add_contacts_button">+ Add Contacts</string>
+    <string name="show_contacts">Show contacts</string>
+    <string name="added_contacts">Added Contact: 0</string>
+    <string name="write_a_message">Write a message...</string>
+    <string name="add_date_button">Date</string>
+    <string name="add_hour_button">Hour</string>
+    <string name="create_schedulation_button">+ Create Schedulation</string>
+    <string name="update_schedulation_button">/ Update Schedulation</string>
+    <string name="remove_schedulation_button">- Remove Schedulation</string>
+
+    <string name="no_description">No Description</string>
+    <string name="continue_button">continue</string>
+    <string name="keep">Keep</string>
+    <string name="remove">Remove</string>
+    <string name="save">Save</string>
+    <string name="to_search_contact">To: Search Contact</string>
+    <string name="added_schedulation_message">Added Schedulation!</string>
+    <string name="want_to_delete_schedulation">Do you really want to remove the schedulation?</string>
+    <string name="want_to_update_schedulation">Do you really want to update the schedulation?</string>
+    <string name="confirm">confirm</string>
+    <string name="select_date_fragment_title">Select a Date</string>
+    <string name="update">update</string>
+    <string name="no_schedulation_present">No schedulation already created to show!</string>
+
+    <string name ="contact_is_added">Contact is already added in list</string>
 </resources>

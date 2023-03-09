@@ -21,6 +21,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -31,7 +32,6 @@ import it.bancon.wascheduler.configuration.AppContractClass;
 import it.bancon.wascheduler.model.ContactLoader;
 import it.bancon.wascheduler.model.ContactModel;
 
-// TODO: Gestire doppioni nella selezione dei contatti (Set o ArrayList?) e i vari feedback conseguenti in UI
 public class SelectContactsFragment extends DialogFragment implements AdapterListViewContacts.OnContactListEventListener{
     private Button buttonSave;
     private Context context;
@@ -91,12 +91,25 @@ public class SelectContactsFragment extends DialogFragment implements AdapterLis
         editTextPhone.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                editTextPhone.setText("");
-                editTextPhone.setHint("cerca altri contatti...");
-                contacts.add(contactLoader.getContactFromName((String) adapterView.getItemAtPosition(i)));
-                adapterListViewContacts.notifyDataSetChanged();
+                editTextPhone.setText(getResources().getString(R.string.empty_string));
+                editTextPhone.setHint(getResources().getString(R.string.search_for_other_contacts_hint));
+
+                if(!isAlreadyAddedContanctToListView(contactLoader,adapterView,i)){
+                    addContactToListView(contactLoader,adapterView,i);
+                } else {
+                    Toast toast= Toast. makeText(context,activity.getResources().getString(R.string.contact_is_added),Toast.LENGTH_SHORT);
+                    toast.show();
+                }
             }
         });
+    }
+    private boolean isAlreadyAddedContanctToListView(ContactLoader contactLoader, AdapterView<?> adapterView, int i){
+        return contacts.contains(contactLoader.getContactFromName((String) adapterView.getItemAtPosition(i)));
+    }
+
+    private void addContactToListView(ContactLoader contactLoader, AdapterView<?> adapterView,int i) {
+        contacts.add(contactLoader.getContactFromName((String) adapterView.getItemAtPosition(i)));
+        adapterListViewContacts.notifyDataSetChanged();
     }
 
     @Override

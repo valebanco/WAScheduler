@@ -37,14 +37,14 @@
             android:textAlignment="center"
             android:textSize="20dp"
             android:textColor="@color/white"
-            android:text="Schedulazione aggiunta!" />
+            android:text="@string/added_schedulation_message" />
 
         <Button
             android:id="@+id/buttonContinue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/teal_700"
-            android:text="Continua" />
+            android:text="@string/continue_button" />
     </LinearLayout>
 
 

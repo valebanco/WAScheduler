@@ -24,8 +24,9 @@ public class RemoveScheduleConfirmationDialogFragment extends DialogFragment {
     private Button denyRemoveButton;
     private RemoveScheduleListener listener;
 
-    public RemoveScheduleConfirmationDialogFragment(Context context) {
+    public RemoveScheduleConfirmationDialogFragment(Context context, RemoveScheduleListener listener) {
         this.context = context;
+        this.listener = listener;
     }
 
     @Override

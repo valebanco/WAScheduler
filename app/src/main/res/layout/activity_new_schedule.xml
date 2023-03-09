@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@drawable/bg_border_title_new_schedule"
-            android:hint="inserisci Titolo"
+            android:hint="@string/insert_title"
             android:inputType="text"
             android:textAlignment="center"
             android:textColor="@color/white"
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@drawable/bg_border_edit_text_new_schedule"
-            android:hint="Descrizione"
+            android:hint="@string/insert_description"
             android:inputType="text"
             android:textAlignment="center"
             android:textSize="25dp" />
@@ -43,7 +43,7 @@
             android:id="@+id/buttonAddContacts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Aggiungi contatti"
+            android:text="@string/add_contacts_button"
             android:onClick="popSelectContactsFragment"
             android:backgroundTint="@color/orange1"
             />
@@ -52,7 +52,7 @@
             android:id="@+id/textViewShowNumberAddedContacts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Contatti aggiunti: 0"
+            android:text="@string/added_contacts"
             android:textAlignment="center"
             style="@android:style/Widget.EditText"
             android:textColor="@color/white"
@@ -69,7 +69,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/bg_border_edit_text_new_schedule"
-                android:hint="Scrivi un messaggio..."
+                android:hint="@string/write_a_message"
                 android:paddingBottom="50dp"
                 android:textColorHint="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -95,14 +95,14 @@
                 android:layout_marginBottom="10dp"
                 android:onClick="popCalendarView"
                 android:drawableLeft="@android:drawable/ic_menu_today"
-                android:text="data"
+                android:text="@string/add_date_button"
                 android:textSize="15dp"/>
 
             <TextView
                 android:id="@+id/textViewShowDateSelected"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Data selezionata: nessuna"
+                android:text="@string/no_date_selected"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="20dp" />
@@ -125,13 +125,13 @@
                 android:onClick="popTimePicker"
                 android:drawableLeft="@drawable/clock"
                 android:textSize="15dp"
-                android:text="  ora  " />
+                android:text="@string/add_hour_button" />
 
             <TextView
                 android:id="@+id/textViewShowTimeSelected"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ora selezionata: nessuna"
+                android:text="@string/no_time_selected"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="20dp" />
@@ -154,7 +154,7 @@
             android:layout_marginBottom="10dp"
             android:onClick="popCompletedMessage"
             android:backgroundTint="@color/teal_700"
-            android:text="+ Crea schedulazione" />
+            android:text="@string/create_schedulation_button" />
 
 
 

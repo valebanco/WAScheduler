@@ -25,7 +25,7 @@
         android:id="@+id/emptyListMessageTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ancora nessun programma di schedule generato"
+        android:text="@string/no_schedulation_present"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

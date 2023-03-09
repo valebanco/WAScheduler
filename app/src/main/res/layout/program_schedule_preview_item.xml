@@ -59,7 +59,7 @@
                 android:layout_height="match_parent"
                 android:textColor="@color/purple_500"
                 android:textSize="10dp"
-                android:text="Descrizione programma di schedule" />
+                android:text="@string/no_description" />
 
             <LinearLayout
                 android:id="@+id/LinearRowContentItemBottom"

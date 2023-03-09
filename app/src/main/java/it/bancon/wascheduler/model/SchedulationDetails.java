@@ -50,6 +50,7 @@ public class SchedulationDetails extends Schedulation implements Parcelable {
         parcel.writeString(message);
         parcel.writeString(dateToSchedule);
         parcel.writeString(hourToSchedule);
+
         ContactModel arrayContactModel[] = ContactModel.CREATOR.newArray(contacts.size());
 
         for(int i = 0; i < contacts.size() ; i++) {
@@ -79,7 +80,7 @@ public class SchedulationDetails extends Schedulation implements Parcelable {
         Object[] objectsFromReading = in.readArray(ContactModel.class.getClassLoader());
         contacts = new ArrayList<>(objectsFromReading.length);
 
-        for (int i =0; i < objectsFromReading.length-1; i++){
+        for (int i =0; i < objectsFromReading.length; i++){
             contacts.add((ContactModel) objectsFromReading[i]);
         }
     }
