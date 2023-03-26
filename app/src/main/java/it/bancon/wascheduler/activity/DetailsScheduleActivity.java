@@ -6,6 +6,7 @@ import it.bancon.wascheduler.configuration.AppContractClass;
 import it.bancon.wascheduler.model.ContactLoader;
 import it.bancon.wascheduler.model.ContactModel;
 import it.bancon.wascheduler.model.SchedulationDetails;
+import it.bancon.wascheduler.utils.DateTimeUtils;
 import it.bancon.wascheduler.utils.IOUtils;
 import it.bancon.wascheduler.validator.ScheduleValidatorForm;
 import it.bancon.wascheduler.view.CompletedFragment;
@@ -25,6 +26,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -56,6 +58,8 @@ public class DetailsScheduleActivity extends AppCompatActivity
     private EditText editTextDescription;
     private EditText editTextMessage;
 
+    private String timeSelected;
+    private String dateSelected;
 
     private ArrayList<ContactModel> contacts;
     private UpdateScheduleConfirmationDialogFragment updateFragment;
@@ -83,23 +87,8 @@ public class DetailsScheduleActivity extends AppCompatActivity
         loadSchedulationDetailsInformationToActivity();
 
     }
-    public void popSelectContactsFragment(View view){
-        SelectContactsFragment selectContactsFragment = new SelectContactsFragment(DetailsScheduleActivity.this, DetailsScheduleActivity.this, contacts, this);
-        selectContactsFragment.show(getSupportFragmentManager(),"selectContactFragment");
-    }
-    public void popTimePicker(View view) {
 
-        int style = AlertDialog.THEME_HOLO_DARK;
 
-        TimePickerDialog timePickerDialog = new TimePickerDialog(this,style,this,hour,minute,true);
-        timePickerDialog.setTitle(R.string.select_hour_text);
-        timePickerDialog.show();
-    }
-
-    public void popCalendarView(View view) {
-        selectDateFragment = new SelectDateFragment(DetailsScheduleActivity.this,listener);
-        selectDateFragment.show(getSupportFragmentManager(),"selectDateFragment");
-    }
 
 
     private void loadSchedulationDetailsInformationToActivity() {
@@ -109,8 +98,8 @@ public class DetailsScheduleActivity extends AppCompatActivity
 
         textCountContactsSelected.setText(getResources().getString(R.string.selected_contacts_text) + contacts.size());
 
-        textTimeSelected.setText(schedulationDetailsSelected.getHourToSchedule());
-        textDateSelected.setText(schedulationDetailsSelected.getDateToSchedule());
+        textTimeSelected.setText(getResources().getString(R.string.selected_hour_text) + schedulationDetailsSelected.getHourToSchedule());
+        textDateSelected.setText(getResources().getString(R.string.selected_date_text) + schedulationDetailsSelected.getDateToSchedule());
     }
 
 
@@ -152,13 +141,40 @@ public class DetailsScheduleActivity extends AppCompatActivity
         removeSchedulation();
     }
 
+    public void popTimePicker(View view) {
 
+        int style = AlertDialog.THEME_HOLO_DARK;
+
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this,style,this,hour,minute,true);
+        timePickerDialog.setTitle(R.string.select_hour_text);
+        timePickerDialog.show();
+    }
+
+    public void popCalendarView(View view) {
+        selectDateFragment = new SelectDateFragment(DetailsScheduleActivity.this,listener);
+        selectDateFragment.show(getSupportFragmentManager(),"selectDateFragment");
+    }
+
+    public void popSelectContactsFragment(View view){
+        SelectContactsFragment selectContactsFragment = new SelectContactsFragment(DetailsScheduleActivity.this, DetailsScheduleActivity.this, contacts, this);
+        selectContactsFragment.show(getSupportFragmentManager(),"selectContactFragment");
+    }
     @Override
     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
         hour = selectedHour;
         minute = selectedMinute;
-        textTimeSelected.setText(getResources().getString(R.string.selected_hour_text) + String.format(Locale.getDefault(),"%02d:%02d",hour,minute));
-        textTimeSelected.setTextColor(getResources().getColor(R.color.white));
+        timeSelected = String.format(Locale.getDefault(),"%02d:%02d",hour,minute);
+
+        if(DateTimeUtils.isTodayDateEqualsToSelectedDate(dateSelected)
+                && !DateTimeUtils.isTimeSelectedAfterNowTime(hour,minute)) {
+
+            String wrogTimeMessage = getResources().getString(R.string.wrog_time_selected);
+            Toast.makeText(DetailsScheduleActivity.this,wrogTimeMessage,Toast.LENGTH_SHORT).show();
+
+        } else {
+            textTimeSelected.setText(getResources().getString(R.string.selected_hour_text) + timeSelected);
+            textTimeSelected.setTextColor(getResources().getColor(R.color.white));
+        }
     }
 
     @Override
@@ -166,7 +182,9 @@ public class DetailsScheduleActivity extends AppCompatActivity
         day = selectedDay;
         month = selectedMonth;
         year = selectedYear;
-        textDateSelected.setText(getResources().getString(R.string.selected_date_text) + String.format(Locale.getDefault(),"%02d/%02d/%04d",day,month,year));
+        System.out.println(day +"-"+month +"-"+ year + "-->SELECTED");
+        dateSelected = String.format(Locale.getDefault(),"%02d/%02d/%04d",day,month,year);
+        textDateSelected.setText(getResources().getString(R.string.selected_date_text) + dateSelected);
         textDateSelected.setTextColor(getResources().getColor(R.color.white));
     }
 

@@ -15,6 +15,12 @@ import it.bancon.wascheduler.model.ContactLoader;
 import it.bancon.wascheduler.model.ContactModel;
 import it.bancon.wascheduler.model.SchedulationDetails;
 
+/* TODO (facoltativo ma utile):
+      - inserire una validazione che consenta di verificare
+        che l'ora inserita sia superiore all'attuale
+         * CASO LIMITE: l'utente seleziona le 18:00 come schedulazione ma salva alle 18:01,
+                        per cui una schedulazione nel passato non è valida
+ */
 public class ScheduleValidatorForm implements Validator{
    private static final String EMPTY= "";
 

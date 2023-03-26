@@ -23,22 +23,6 @@ public class SchedulationDetails extends Schedulation implements Parcelable {
     public SchedulationDetails(){};
 
     @Override
-    public String toString() {
-        String resultString =  super.getTitle() + AppContractClass.REGEX_ITEM_SCHEDULATION_DETAILS
-                + super.getDescription() + AppContractClass.REGEX_ITEM_SCHEDULATION_DETAILS
-                + message + AppContractClass.REGEX_ITEM_SCHEDULATION_DETAILS
-                + super.getDateToSchedule() + AppContractClass.REGEX_ITEM_SCHEDULATION_DETAILS
-                + super.getHourToSchedule() + AppContractClass.REGEX_ITEM_SCHEDULATION_DETAILS;
-
-        for (ContactModel contact : super.getContacts()){
-            resultString = resultString + contact.getName() + AppContractClass.REGEX_ITEM_CONTACTS + contact.getNumber() + AppContractClass.REGEX_ITEM_SCHEDULATION_DETAILS;
-        }
-        resultString = resultString + "\n";
-
-        return resultString;
-    }
-
-    @Override
     public int describeContents() {
         return 0;
     }
@@ -85,5 +69,34 @@ public class SchedulationDetails extends Schedulation implements Parcelable {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        SchedulationDetails that = (SchedulationDetails) o;
+        return Objects.equals(message, that.message) && super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), message);
+    }
+
+    @Override
+    public String toString() {
+        String resultString =  super.getTitle() + AppContractClass.REGEX_ITEM_SCHEDULATION_DETAILS
+                + super.getDescription() + AppContractClass.REGEX_ITEM_SCHEDULATION_DETAILS
+                + message + AppContractClass.REGEX_ITEM_SCHEDULATION_DETAILS
+                + super.getDateToSchedule() + AppContractClass.REGEX_ITEM_SCHEDULATION_DETAILS
+                + super.getHourToSchedule() + AppContractClass.REGEX_ITEM_SCHEDULATION_DETAILS;
+
+        for (ContactModel contact : super.getContacts()){
+            resultString = resultString + contact.getName() + AppContractClass.REGEX_ITEM_CONTACTS + contact.getNumber() + AppContractClass.REGEX_ITEM_SCHEDULATION_DETAILS;
+        }
+        resultString = resultString + "\n";
+
+        return resultString;
+    }
 
 }

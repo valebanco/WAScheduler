@@ -59,12 +59,12 @@ public class SelectDateFragment extends DialogFragment {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDateTime now = LocalDateTime.now();
         String [] date = dtf.format(now).split("/");
-
+        calendarView.setMinDate(System.currentTimeMillis());
         selectDateFragmentListener.OnDateChanged(Integer.parseInt(date[2]),Integer.parseInt(date[1]),Integer.parseInt(date[0]));
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
-                selectDateFragmentListener.OnDateChanged(year,month,day);
+                selectDateFragmentListener.OnDateChanged(year,month + 1 ,day);
             }
         });
     }

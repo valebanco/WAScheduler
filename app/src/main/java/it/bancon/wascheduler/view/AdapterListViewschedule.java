@@ -43,8 +43,8 @@ public class AdapterListViewschedule extends ArrayAdapter<SchedulationDetailsPre
 
         textViewTitle.setText(title);
         textViewDescription.setText(description);
-        textViewDate.setText(date);
-        textViewTime.setText(time);
+        textViewDate.setText(mContext.getResources().getString(R.string.selected_date_text).replace("\n","").trim() + date);
+        textViewTime.setText(mContext.getResources().getString(R.string.selected_hour_text).replace("\n","").trim() + time);
 
 
 

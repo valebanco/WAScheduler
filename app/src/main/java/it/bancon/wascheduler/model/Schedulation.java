@@ -55,4 +55,19 @@ public abstract class Schedulation {
     public void setHourToSchedule(String hourToSchedule) {
         this.hourToSchedule = hourToSchedule;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Schedulation that = (Schedulation) o;
+        return Objects.equals(title, that.title) && Objects.equals(description, that.description) && Objects.equals(contacts, that.contacts) && Objects.equals(dateToSchedule, that.dateToSchedule) && Objects.equals(hourToSchedule, that.hourToSchedule);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, description, contacts, dateToSchedule, hourToSchedule);
+    }
+
+
 }

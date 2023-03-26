@@ -46,6 +46,8 @@
     <string name="select_date_fragment_title">Select a Date</string>
     <string name="update">update</string>
     <string name="no_schedulation_present">No schedulation already created to show!</string>
+    <string name="wrog_time_selected">Time selected not valid: select a time after actual</string>
 
     <string name ="contact_is_added">Contact is already added in list</string>
+    <string name ="schedulation_already_present">Schedulation is already saved</string>
 </resources>
