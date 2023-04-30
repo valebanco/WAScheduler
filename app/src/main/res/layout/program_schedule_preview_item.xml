@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
-    android:padding="5dp">
+    android:padding="10dp">
 
     <LinearLayout
         android:id="@+id/LinearRowItem"
@@ -19,9 +18,9 @@
         app:layout_constraintTop_toTopOf="parent"
         android:backgroundTint="@color/white"
         android:background="@drawable/bg_border_linear_layout"
-        android:paddingTop="10px"
-        android:paddingBottom="10px"
-        android:paddingLeft="10px"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
         >
 
         <ImageView
@@ -33,56 +32,56 @@
             android:background="@drawable/bg_image_list_scheduler_item"
             android:src="@android:drawable/ic_menu_agenda" />
 
-        <View
-            android:layout_width="2dp"
-            android:layout_marginLeft="5dp"
-            android:layout_height="match_parent"
-            android:background="@color/purple_500" />
-
-        <LinearLayout
-            android:id="@+id/LinearRowContentItem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="5dp">
-            <TextView
-                android:id="@+id/TextTitleScheduleProgram"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Titolo programma di schedule"
-                android:textColor="@color/purple_700"
-                android:textSize="15dp" />
-
-            <TextView
-                android:id="@+id/TextDescriptionScheduleProgram"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textColor="@color/purple_500"
-                android:textSize="10dp"
-                android:text="@string/no_description" />
-
             <LinearLayout
-                android:id="@+id/LinearRowContentItemBottom"
-                android:layout_width="match_parent"
+                android:id="@+id/LinearRowContentItem"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="0.1">
+                <TextView
+                    android:id="@+id/TextTitleScheduleProgram"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Titolo programma di schedule"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/TextDescriptionScheduleProgram"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/black"
+                    android:textSize="10dp"
+                    android:text="@string/no_description" />
 
                 <TextView
                     android:id="@+id/TextSendDate"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textColor="@color/green_confirmation"
+                    android:textColor="@color/black"
                     android:textSize="12dp"
                     android:text="Data invio"/>
                 <TextView
                     android:id="@+id/TextSendHour"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textColor="@color/design_default_color_error"
+                    android:textColor="@color/black"
                     android:textSize="12dp"
                     android:text="Ora invio"/>
-            </LinearLayout>
+
+
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/IconArrowRowItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_gravity="center"
+            android:src="@drawable/right" />
+
 
 
 
