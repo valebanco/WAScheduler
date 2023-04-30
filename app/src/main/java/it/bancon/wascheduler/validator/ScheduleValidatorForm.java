@@ -21,7 +21,7 @@ import it.bancon.wascheduler.model.SchedulationDetails;
          * CASO LIMITE: l'utente seleziona le 18:00 come schedulazione ma salva alle 18:01,
                         per cui una schedulazione nel passato non è valida
  */
-public class ScheduleValidatorForm implements Validator{
+public class ScheduleValidatorForm implements Validator {
    private static final String EMPTY= "";
 
    private Activity activity;

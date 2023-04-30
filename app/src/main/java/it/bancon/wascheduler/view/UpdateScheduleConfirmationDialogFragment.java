@@ -1,5 +1,6 @@
 package it.bancon.wascheduler.view;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import it.bancon.wascheduler.R;
 import it.bancon.wascheduler.activity.MainAppActivity;
+import it.bancon.wascheduler.utils.ActivityNavigationUtils;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,13 +23,15 @@ import java.io.IOException;
 
 public class UpdateScheduleConfirmationDialogFragment extends DialogFragment {
     private Context context;
+    private Activity activity;
     private Button confirmUpdateButton;
     private Button denyUpdateButton;
     private  UpdateScheduleListener listener;
 
 
-    public UpdateScheduleConfirmationDialogFragment(Context context,UpdateScheduleListener listener) {
+    public UpdateScheduleConfirmationDialogFragment(Activity activity, Context context, UpdateScheduleListener listener) {
         this.context = context;
+        this.activity = activity;
         this.listener = listener;
     }
 
@@ -53,8 +57,7 @@ public class UpdateScheduleConfirmationDialogFragment extends DialogFragment {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Intent intent = new Intent(context, MainAppActivity.class);
-                startActivity(intent);
+                ActivityNavigationUtils.goUpToTopActivity(activity);
                 dismiss();
             }
         });
@@ -62,8 +65,7 @@ public class UpdateScheduleConfirmationDialogFragment extends DialogFragment {
         denyUpdateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, MainAppActivity.class);
-                startActivity(intent);
+                ActivityNavigationUtils.goUpToTopActivity(activity);
                 dismiss();
             }
         });

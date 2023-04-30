@@ -27,7 +27,7 @@ import it.bancon.wascheduler.view.AdapterListViewschedule;
 
 public class MainAppActivity extends AppCompatActivity
         implements AdapterView.OnItemClickListener,View.OnClickListener{
-
+    public static final String ACTIVITY_NAME_LOG ="MainAppActivity ->   ";
     FloatingActionButton FABAddScheduleProgram;
     TextView emptyListSchedulesMessage;
     AdapterListViewschedule adapter;
@@ -38,6 +38,7 @@ public class MainAppActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        System.out.println(ACTIVITY_NAME_LOG +"onCreate");
         setContentView(R.layout.activity_main_app);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar_layout_main_activity);
@@ -46,8 +47,16 @@ public class MainAppActivity extends AppCompatActivity
         listViewSchedule.setOnItemClickListener(this);
         emptyListSchedulesMessage = findViewById(R.id.emptyListMessageTextView);
 
+        initLoading();
+
+        FABAddScheduleProgram = findViewById(R.id.addScheduleFAB);
+        FABAddScheduleProgram.setOnClickListener(this);
+
+
+    }
+    private void initLoading() {
         permissionChecker = new PermissionChecker(MainAppActivity.this,MainAppActivity.this, Manifest.permission.READ_CONTACTS);
-        if(permissionChecker.checkPermission(AppContractClass.MESSAGE_RATIONALE_READ_CONTACTS,AppContractClass.REQUEST_CODE_READ_CONTACTS)){
+        if(permissionChecker.checkPermission(AppContractClass.MESSAGE_RATIONALE_READ_CONTACTS,AppContractClass.REQUEST_CODE_READ_CONTACTS)) {
             //MI ESTRAGGO TUTTE LE SCHEDULAZIONI DA VISUALIZZARE NELL'ACTIVITY
             if(!IOUtils.isEmptyFile(MainAppActivity.this,"schedules.txt")){
                 emptyListSchedulesMessage.setVisibility(View.GONE);
@@ -58,13 +67,7 @@ public class MainAppActivity extends AppCompatActivity
                 }
             }
         }
-
-        FABAddScheduleProgram = findViewById(R.id.addScheduleFAB);
-        FABAddScheduleProgram.setOnClickListener(this);
-
-
     }
-
     private void loadSchedulePrograms() throws IOException {
         schedulationDetailsList = IOUtils.loadScheduleProgramsFromFile(MainAppActivity.this, AppContractClass.FILE_NAME);
         ArrayList<SchedulationDetailsPreview> schedulationDetailsPreviews = new ArrayList<>();
@@ -102,5 +105,38 @@ public class MainAppActivity extends AppCompatActivity
         } else {
             Toast.makeText(MainAppActivity.this,AppContractClass.MESSAGE_TOAST_NEED_READ_CONTACT_PERMISSION,Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        System.out.println(ACTIVITY_NAME_LOG +"onResume");
+        initLoading();
+        super.onResume();
+    }
+
+    @Override
+    protected void onStart() {
+        System.out.println(ACTIVITY_NAME_LOG +"onStart");
+        super.onStart();
+    }
+
+    @Override
+    protected void onRestart() {
+        System.out.println(ACTIVITY_NAME_LOG +"onRestart");
+        super.onRestart();
+    }
+
+    @Override
+    protected void onPause() {
+        System.out.println(ACTIVITY_NAME_LOG +"onPause");
+        super.onPause();
+    }
+
+
+
+    @Override
+    protected void onDestroy() {
+        System.out.println(ACTIVITY_NAME_LOG +"onDestroy");
+        super.onDestroy();
     }
 }

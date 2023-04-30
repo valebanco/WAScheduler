@@ -1,7 +1,6 @@
 package it.bancon.wascheduler.view;
 
-import android.content.Context;
-import android.content.Intent;
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,14 +13,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import it.bancon.wascheduler.R;
-import it.bancon.wascheduler.activity.MainAppActivity;
+import it.bancon.wascheduler.utils.ActivityNavigationUtils;
 
 
 public class CompletedFragment extends DialogFragment {
     private Button buttonContinue;
-    private Context context;
-    public CompletedFragment(Context context){
-        this.context = context;
+    private final Activity activity;
+    public CompletedFragment(Activity activity){
+        this.activity = activity;
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,8 +42,7 @@ public class CompletedFragment extends DialogFragment {
         buttonContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, MainAppActivity.class);
-                startActivity(intent);
+                ActivityNavigationUtils.goUpToTopActivity(activity);
                 dismiss();
             }
         });

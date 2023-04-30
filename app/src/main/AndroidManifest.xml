@@ -17,9 +17,11 @@
         android:theme="@style/Theme.WAScheduler"
         tools:targetApi="31">
         <activity
+            android:parentActivityName=".activity.MainAppActivity"
             android:name=".activity.DetailsScheduleActivity"
             android:exported="false" />
         <activity
+            android:parentActivityName=".activity.MainAppActivity"
             android:name=".activity.NewScheduleActivity"
             android:exported="false" />
         <activity
@@ -27,7 +29,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

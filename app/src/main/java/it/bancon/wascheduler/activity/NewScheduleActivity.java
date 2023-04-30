@@ -20,17 +20,13 @@ import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -47,7 +43,6 @@ public class NewScheduleActivity extends AppCompatActivity
 
     private EditText editTextTitle;
     private EditText editTextDescription;
-    private EditText editTextContact;
     private EditText editTextMessage;
 
     private SelectDateFragment selectDateFragment;
@@ -72,7 +67,6 @@ public class NewScheduleActivity extends AppCompatActivity
 
         editTextTitle = findViewById(R.id.editTextTitleSchedule);
         editTextDescription = findViewById(R.id.editTextDescription);
-        editTextContact = findViewById(R.id.editTextPhone);
         editTextMessage = findViewById(R.id.editTextMessage);
         textDateSelected = findViewById(R.id.textViewShowDateSelected);
         textTimeSelected = findViewById(R.id.textViewShowTimeSelected);
@@ -109,7 +103,9 @@ public class NewScheduleActivity extends AppCompatActivity
         schedulationDetails.setDescription(editTextDescription.getText().toString());
         schedulationDetails.setMessage(editTextMessage.getText().toString());
         schedulationDetails.setDateToSchedule(dateSelectedText[1]);
-        schedulationDetails.setHourToSchedule(timeSelectedText[1] + ":" + timeSelectedText[2]);
+        if(!textTimeSelected.getText().toString().equals(getResources().getString(R.string.no_time_selected))){
+            schedulationDetails.setHourToSchedule(timeSelectedText[1] + ":" + timeSelectedText[2]);
+        }
         schedulationDetails.setContacts(contacts);
 
         return schedulationDetails;
@@ -186,6 +182,7 @@ public class NewScheduleActivity extends AppCompatActivity
         dateSelected = String.format(Locale.getDefault(),"%02d/%02d/%04d",day,month,year);
         textDateSelected.setText(getResources().getString(R.string.selected_date_text) + dateSelected);
         textDateSelected.setTextColor(getResources().getColor(R.color.white));
+        textTimeSelected.setText(getResources().getString(R.string.no_time_selected));
     }
 
 

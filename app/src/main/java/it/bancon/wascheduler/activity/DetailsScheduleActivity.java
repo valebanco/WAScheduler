@@ -3,13 +3,10 @@ package it.bancon.wascheduler.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import it.bancon.wascheduler.R;
 import it.bancon.wascheduler.configuration.AppContractClass;
-import it.bancon.wascheduler.model.ContactLoader;
 import it.bancon.wascheduler.model.ContactModel;
 import it.bancon.wascheduler.model.SchedulationDetails;
 import it.bancon.wascheduler.utils.DateTimeUtils;
-import it.bancon.wascheduler.utils.IOUtils;
 import it.bancon.wascheduler.validator.ScheduleValidatorForm;
-import it.bancon.wascheduler.view.CompletedFragment;
 import it.bancon.wascheduler.view.RemoveScheduleConfirmationDialogFragment;
 import it.bancon.wascheduler.view.SelectContactsFragment;
 import it.bancon.wascheduler.view.SelectDateFragment;
@@ -18,11 +15,7 @@ import it.bancon.wascheduler.view.UpdateScheduleConfirmationDialogFragment;
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
-import android.os.Parcel;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -30,7 +23,6 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 /*
 TODO:
@@ -49,6 +41,7 @@ public class DetailsScheduleActivity extends AppCompatActivity
         SelectContactsFragment.onUpdateCountSelectedContactsListener{
 
     SchedulationDetails schedulationDetailsSelected;
+    SchedulationDetails schedulationDetailsSelectedCopy;
     private SelectDateFragment selectDateFragment;
     private TextView textTimeSelected;
     private TextView textDateSelected;
@@ -81,6 +74,7 @@ public class DetailsScheduleActivity extends AppCompatActivity
         textTimeSelected = findViewById(R.id.textViewShowTimeSelected);
         textCountContactsSelected = findViewById(R.id.textViewShowNumberAddedContacts);
 
+        schedulationDetailsSelectedCopy = getIntent().getParcelableExtra(AppContractClass.KEY_PARCELABLE_SCHEDULATION_DETAILS);
         schedulationDetailsSelected  = getIntent().getParcelableExtra(AppContractClass.KEY_PARCELABLE_SCHEDULATION_DETAILS);
         contacts = (ArrayList<ContactModel>) schedulationDetailsSelected.getContacts();
 
@@ -104,24 +98,25 @@ public class DetailsScheduleActivity extends AppCompatActivity
 
 
 
-    public void popUpdateConfirmationMessage(View view) throws IOException {
+    public void popUpdateConfirmationMessage(View view) {
         ScheduleValidatorForm validatorForm= new ScheduleValidatorForm(DetailsScheduleActivity.this,DetailsScheduleActivity.this,contacts);
         boolean resultValidation = validatorForm.validate();
         if(resultValidation) {
-            updateFragment = new UpdateScheduleConfirmationDialogFragment(this,this);
+            updateFragment = new UpdateScheduleConfirmationDialogFragment(this,this,this);
             updateFragment.show(getSupportFragmentManager(),"updateFragment");
         }
 
     }
     public void popRemoveConfirmationMessage(View view) throws IOException {
 
-        removeFragment = new RemoveScheduleConfirmationDialogFragment(this,this);
+        removeFragment = new RemoveScheduleConfirmationDialogFragment(this,this,this);
         removeFragment.show(getSupportFragmentManager(),"removeFragment");
 
     }
 
     private void updateSchedulation() throws IOException {
         //INTRODURRE LA LOGICA DI MODIFICA DELLA SCHEDULAZIONE
+
 
     }
 
@@ -137,7 +132,7 @@ public class DetailsScheduleActivity extends AppCompatActivity
     }
 
     @Override
-    public void onConfirmationRemoveSchedule() throws IOException {
+    public void onConfirmationRemoveSchedule() {
         removeSchedulation();
     }
 
@@ -186,6 +181,7 @@ public class DetailsScheduleActivity extends AppCompatActivity
         dateSelected = String.format(Locale.getDefault(),"%02d/%02d/%04d",day,month,year);
         textDateSelected.setText(getResources().getString(R.string.selected_date_text) + dateSelected);
         textDateSelected.setTextColor(getResources().getColor(R.color.white));
+        textTimeSelected.setText(getResources().getString(R.string.no_time_selected));
     }
 
     @Override
